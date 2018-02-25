@@ -25,7 +25,7 @@ def get_datasets(iris_file, train_ratio=0.80):
     data = pd.read_csv(iris_file)
     data.replace(labels, inplace=True)
 
-    train_df = data.sample(frac=train_ratio, random_state=42)
+    train_df = data.sample(frac=train_ratio, random_state=3)
     test_df = data.loc[~data.index.isin(train_df.index), :]
 
     return IrisDataset(train_df), IrisDataset(test_df)
