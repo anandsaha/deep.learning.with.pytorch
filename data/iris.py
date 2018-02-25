@@ -9,11 +9,11 @@ label_idx = {'Iris-setosa': 0, 'Iris-versicolor': 1, 'Iris-virginica': 2}
 class IrisDataset(Dataset):
 
     def __init__(self, data):
-        self.data = data.copy(deep=True)
+        self.data = data
            
     def __getitem__(self, index):
         item = self.data.iloc[index].values
-        return (item[0:4], item[4])
+        return (item[0:4].astype(np.float32), item[4].astype(np.int))
 
     def __len__(self):
         return self.data.shape[0]
